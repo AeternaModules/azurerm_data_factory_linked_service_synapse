@@ -1,3 +1,7 @@
+output "data_factory_linked_service_synapses_id" {
+  description = "Map of id values across all data_factory_linked_service_synapses, keyed the same as var.data_factory_linked_service_synapses"
+  value       = { for k, v in azurerm_data_factory_linked_service_synapse.data_factory_linked_service_synapses : k => v.id }
+}
 output "data_factory_linked_service_synapses_additional_properties" {
   description = "Map of additional_properties values across all data_factory_linked_service_synapses, keyed the same as var.data_factory_linked_service_synapses"
   value       = { for k, v in azurerm_data_factory_linked_service_synapse.data_factory_linked_service_synapses : k => v.additional_properties }
