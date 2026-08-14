@@ -28,7 +28,7 @@ output "data_factory_linked_service_synapses_integration_runtime_name" {
 }
 output "data_factory_linked_service_synapses_key_vault_password" {
   description = "Map of key_vault_password values across all data_factory_linked_service_synapses, keyed the same as var.data_factory_linked_service_synapses"
-  value       = { for k, v in azurerm_data_factory_linked_service_synapse.data_factory_linked_service_synapses : k => v.key_vault_password if v.key_vault_password != null && length(v.key_vault_password) > 0 }
+  value       = { for k, v in azurerm_data_factory_linked_service_synapse.data_factory_linked_service_synapses : k => one(v.key_vault_password) if v.key_vault_password != null && length(v.key_vault_password) > 0 }
 }
 output "data_factory_linked_service_synapses_name" {
   description = "Map of name values across all data_factory_linked_service_synapses, keyed the same as var.data_factory_linked_service_synapses"
